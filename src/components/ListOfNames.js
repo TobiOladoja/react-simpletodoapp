@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import UserInput from './UserInput';
 
 function ListOfNames() {
   const [names, setNames] = useState([
@@ -7,8 +8,8 @@ function ListOfNames() {
     { user: 'Sam', id: 2 },
     { user: 'Alex', id: 3 },
   ]);
-  const addName = () => {
-    setNames([...names, { user: 'new song', id: uuidv4() }]);
+  const addName = (user) => {
+    setNames([...names, { user, id: uuidv4() }]);
   };
   return (
     <div className='list-of-names'>
@@ -17,7 +18,7 @@ function ListOfNames() {
           return <li key={name.id}>{name.user}</li>;
         })}
       </ul>
-      <button onClick={addName}>Add name</button>
+      <UserInput addName={addName} />
     </div>
   );
 }
