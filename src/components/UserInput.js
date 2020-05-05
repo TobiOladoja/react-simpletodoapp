@@ -10,6 +10,7 @@ function UserInput({ addName }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     addName(user);
+    setUser('');
   };
 
   return (
